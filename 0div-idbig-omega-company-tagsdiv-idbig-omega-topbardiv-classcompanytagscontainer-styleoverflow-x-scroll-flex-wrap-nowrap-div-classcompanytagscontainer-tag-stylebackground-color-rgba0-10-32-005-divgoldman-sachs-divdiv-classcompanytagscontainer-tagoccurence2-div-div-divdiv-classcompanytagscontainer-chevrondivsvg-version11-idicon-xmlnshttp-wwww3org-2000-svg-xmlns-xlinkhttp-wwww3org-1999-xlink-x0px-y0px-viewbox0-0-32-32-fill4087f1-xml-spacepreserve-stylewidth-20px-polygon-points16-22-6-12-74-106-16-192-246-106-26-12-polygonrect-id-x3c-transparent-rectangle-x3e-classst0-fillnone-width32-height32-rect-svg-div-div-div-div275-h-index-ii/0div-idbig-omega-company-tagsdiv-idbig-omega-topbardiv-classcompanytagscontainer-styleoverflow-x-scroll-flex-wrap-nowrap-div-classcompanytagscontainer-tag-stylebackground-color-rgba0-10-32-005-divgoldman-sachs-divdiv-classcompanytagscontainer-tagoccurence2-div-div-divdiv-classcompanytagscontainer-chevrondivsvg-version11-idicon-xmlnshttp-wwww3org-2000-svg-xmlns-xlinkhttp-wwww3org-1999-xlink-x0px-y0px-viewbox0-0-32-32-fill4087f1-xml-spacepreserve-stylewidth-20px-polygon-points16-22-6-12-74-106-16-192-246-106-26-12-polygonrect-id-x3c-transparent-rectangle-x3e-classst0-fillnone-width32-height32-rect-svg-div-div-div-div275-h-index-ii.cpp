@@ -2,13 +2,12 @@ class Solution {
 public:
 
     bool isValid(int h, vector<int>&arr){
-        int cnt = 0;
-        for(auto i : arr){
-            if(i>=h){
-                cnt++;
-            }
-        }
-        return cnt>=h;
+        vector<int>::iterator it = lower_bound(arr.begin(), arr.end(), h);
+        int lb = (it-arr.begin());
+        //cout<<h<<" "<<lb<<"\n"; 
+        
+        int val = arr.size()-lb;
+        return val>=h;
     }
     
     int hIndex(vector<int>& citations) {
