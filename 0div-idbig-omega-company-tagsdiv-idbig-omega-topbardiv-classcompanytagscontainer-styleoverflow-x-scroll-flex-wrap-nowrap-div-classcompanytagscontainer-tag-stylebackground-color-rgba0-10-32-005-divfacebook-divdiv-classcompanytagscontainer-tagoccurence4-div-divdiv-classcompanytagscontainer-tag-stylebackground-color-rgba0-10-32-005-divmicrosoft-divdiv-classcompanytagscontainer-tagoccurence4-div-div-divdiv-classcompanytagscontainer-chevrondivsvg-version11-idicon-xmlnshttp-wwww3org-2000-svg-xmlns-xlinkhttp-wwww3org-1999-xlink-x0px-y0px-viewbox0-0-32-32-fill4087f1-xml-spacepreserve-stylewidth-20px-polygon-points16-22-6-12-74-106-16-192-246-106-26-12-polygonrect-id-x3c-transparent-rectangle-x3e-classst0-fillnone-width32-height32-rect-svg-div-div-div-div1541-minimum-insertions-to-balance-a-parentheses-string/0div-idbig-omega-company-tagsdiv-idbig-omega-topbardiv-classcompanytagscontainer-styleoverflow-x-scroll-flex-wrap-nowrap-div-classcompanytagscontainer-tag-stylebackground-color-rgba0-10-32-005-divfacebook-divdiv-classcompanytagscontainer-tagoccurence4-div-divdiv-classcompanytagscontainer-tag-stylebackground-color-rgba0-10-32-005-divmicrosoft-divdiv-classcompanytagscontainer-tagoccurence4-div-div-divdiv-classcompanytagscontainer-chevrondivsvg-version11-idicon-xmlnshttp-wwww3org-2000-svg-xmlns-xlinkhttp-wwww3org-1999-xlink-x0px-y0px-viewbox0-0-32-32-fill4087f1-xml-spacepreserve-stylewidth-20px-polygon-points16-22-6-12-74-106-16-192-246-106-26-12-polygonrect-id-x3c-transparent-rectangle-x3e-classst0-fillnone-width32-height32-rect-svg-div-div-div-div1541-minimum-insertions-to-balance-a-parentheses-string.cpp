@@ -1,22 +1,25 @@
 class Solution {
 public:
     int minInsertions(string s) {
-        int res = 0, right = 0;
-        for (char &c: s) {
-            if (c == '(') {
-                if (right % 2 > 0) {
-                    right--;
-                    res++;
+        int ans = 0;
+        int r = 0;
+        for (auto i : s) {
+            if (i == '(') {
+                if (r % 2 > 0) {
+                    r--;
+                    ans++;
                 }
-                right += 2;
-            } else {
-                right--;
-                if (right < 0) {
-                    right += 2;
-                    res++;
+                r += 2;
+            }
+            else {
+                r--;
+                if (r < 0) {
+                    r += 2;
+                    ans++;
                 }
             }
         }
-        return right + res;
+        ans+=r;
+        return ans;
     }
 };
